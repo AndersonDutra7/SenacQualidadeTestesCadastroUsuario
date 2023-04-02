@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SenacQualidadeTestesCadastroUsuario.iml" filepath="$PROJECT_DIR$/.idea/SenacQualidadeTestesCadastroUsuario.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cucumber/com.cucumber.iml" filepath="$PROJECT_DIR$/cucumber/com.cucumber.iml" />
     </modules>
   </component>
 </project>
