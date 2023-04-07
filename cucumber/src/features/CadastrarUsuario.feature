@@ -27,7 +27,7 @@ Funcionalidade: Cadastro de usuários
       | os campos Login e Senha           | são obrigatórios|
       | os campos Nome, Login e Senha     | são obrigatórios|
 
-  @Geral
+  @Basico
   Esquema do Cenário: Os campos Nome e Nome da Mãe devem ter no máximo 256 caracteres
     Dado que o usuário preencheu o campo Nome com mais de 0 caracteres
     E preencheu o campo Nome com mais de 256 caracteres
@@ -50,6 +50,7 @@ Funcionalidade: Cadastro de usuários
       | campo                         | mensagem                  |
       | o campo CPF                   | deve possuir 11 caracteres|
 
+  @Especifico
   Esquema do Cenário: O campo login deve aceitar no máximo 100 caracteres
     Dado que o usuário preencheu o campo Login com mais de 0 caracteres
     E preencheu o campo Login com 257 caracteres ou mais
@@ -59,6 +60,7 @@ Funcionalidade: Cadastro de usuários
       | campo                           | mensagem                            |
       | o campo Login                   | deve possuir no máximo 100 caracteres|
 
+  @Especifico
   Cenário: A senha deve ser formada por pelo menos um carácter especial, por pelo menos
             uma letra maiúscula e no máximo 8 caracteres
     Dado que o usuário preencheu o campo Senha
@@ -71,6 +73,7 @@ Funcionalidade: Cadastro de usuários
     E deve apresentar uma mensagem intuitiva informando que a senha deve conter pelo menos 1 letra maiúscula
     E deve apresentar uma mensagem inuitiva informando que a senha deve conter no máximo 8 caracteres
 
+  @Especifico
   Cenário: Deve ser possível cadastrar no máximo 100 usuários
     Dado que o usuário acessou o modal Cadastrar Usuário
     E já existem 100 usuários cadastrados
