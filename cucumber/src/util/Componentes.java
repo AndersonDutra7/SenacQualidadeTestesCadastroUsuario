@@ -59,4 +59,28 @@ public class Componentes {
     public void fecharComponentes(){
         driver.quit();
     }
+
+    public void testarTextarea(){
+        driver.findElement(By.id("elementosForm:sugestoes")).sendKeys("Batatinha1\n\nBatatinha2");
+    }
+
+    public void validarTextarea() {
+        Assert.assertEquals("Batatinha1\n\nBatatinha2", driver.findElement((By.id("elementosForm:sugestoes"))).getAttribute("value"));
+    }
+
+    public void testarRadioButton(){
+        driver.findElement(By.id("elementosForm:sexo:0")).click();
+    }
+
+    public void validarRadioButton(){
+        Assert.assertTrue(driver.findElement(By.id("elementosForm:sexo:0")).isSelected());
+    }
+
+    public void validarCheckbox() {
+        Assert.assertTrue(driver.findElement(By.id("elementosForm:comidaFavorita:0")).isSelected());
+    }
+
+    public void testarCheckbox() {
+        driver.findElement(By.id("elementosForm:comidaFavorita:0")).click();
+    }
 }
