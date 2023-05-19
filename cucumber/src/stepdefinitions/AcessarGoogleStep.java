@@ -31,7 +31,7 @@ public class AcessarGoogleStep {
     @Quando("clicar em Enter")
     public void clicar_em_Enter() {
         // Write code here that turns the phrase above into concrete actions
-        componentes.clicarEnder();
+        componentes.clicarEnter();
     }
 
     @Então("deve apresentar a lista de pesquisa com SENAC Palhoça")

@@ -40,3 +40,5 @@ Funcionalidade: Acessar vários componentes html
       | click             | elemento       |
       | rádio button      | rádio button   |
       | checkbox          | checkbox       |
+
+  Esque

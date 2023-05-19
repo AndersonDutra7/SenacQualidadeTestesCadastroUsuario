@@ -17,7 +17,7 @@ public class Componentes {
         driver = new ChromeDriver();
     }
 
-    public void clicarEnder(){
+    public void clicarEnter(){
         driver.findElement(By.name("q")).sendKeys((Keys.ENTER));
     }
 
