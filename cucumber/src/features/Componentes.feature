@@ -4,6 +4,7 @@ Funcionalidade: Acessar vários componentes html
 
   Contexto:
     Dado que o usuário acessou o arquivo Campo de Treinamento
+
   @Validar_campo_textfield
   Cenário: Validar campo textfield
     Quando o usuário digitar Batatinha
