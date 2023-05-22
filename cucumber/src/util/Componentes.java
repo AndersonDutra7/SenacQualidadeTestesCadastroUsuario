@@ -1,13 +1,13 @@
 package util;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class Componentes {
     private WebDriver driver;
+    private Select select;
 
     public void inicializar(){
         String chromedriver = System.getProperty("user.dir")
@@ -35,7 +35,12 @@ public class Componentes {
     }
 
     public void fecharNavegador(){
-        driver.quit();
+        try {
+            Thread.sleep(10000); // Aguarda 10 segundos antes de fechar)
+            driver.quit();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void inicializarComponentes(){
@@ -48,39 +53,92 @@ public class Componentes {
         driver.get("file:///" + System.getProperty("user.dir") + "/Driver/componentes.html");
     }
 
-    public void testarTextfield(){
-        driver.findElement(By.id("elementosForm:nome")).sendKeys("Batatinha");
+    public void testarTextfieldNome(){
+        driver.findElement(By.id("elementosForm:nome")).sendKeys("Anderson");
     }
 
-    public void validarTextfield(){
-        Assert.assertEquals("Batatinha", driver.findElement((By.id("elementosForm:nome"))).getAttribute("value"));
+    public void validarTextfieldNome(){
+        Assert.assertEquals("Anderson", driver.findElement((By.id("elementosForm:nome"))).getAttribute("value"));
     }
 
-    public void fecharComponentes(){
-        driver.quit();
+    public void testarTextfieldSobrenome(){
+        driver.findElement(By.id("elementosForm:sobrenome")).sendKeys("Dutra");
     }
 
-    public void testarTextarea(){
-        driver.findElement(By.id("elementosForm:sugestoes")).sendKeys("Batatinha1\n\nBatatinha2");
+    public void validarTextfieldSobrenome(){
+        Assert.assertEquals("Dutra", driver.findElement((By.id("elementosForm:sobrenome"))).getAttribute("value"));
     }
 
-    public void validarTextarea() {
-        Assert.assertEquals("Batatinha1\n\nBatatinha2", driver.findElement((By.id("elementosForm:sugestoes"))).getAttribute("value"));
-    }
-
-    public void testarRadioButton(){
+    public void testarRadioButtonSexo(){
         driver.findElement(By.id("elementosForm:sexo:0")).click();
     }
 
-    public void validarRadioButton(){
+    public void validarRadioButtonSexo(){
         Assert.assertTrue(driver.findElement(By.id("elementosForm:sexo:0")).isSelected());
     }
 
-    public void validarCheckbox() {
+    public void testarCheckboxComidaFavorita() {
+        driver.findElement(By.id("elementosForm:comidaFavorita:0")).click();
+    }
+
+    public void validarCheckboxComidaFavorita() {
         Assert.assertTrue(driver.findElement(By.id("elementosForm:comidaFavorita:0")).isSelected());
     }
 
-    public void testarCheckbox() {
-        driver.findElement(By.id("elementosForm:comidaFavorita:0")).click();
+    public void testarSelectEscolaridade() {
+        select = new Select(driver.findElement(By.id("elementosForm:escolaridade")));
+        select.selectByValue("superior");
     }
+
+    public void validarSelectEscolaridade(){
+        Select select = new Select(driver.findElement(By.id("elementosForm:escolaridade")));
+        Assert.assertTrue(driver.findElement(By.id("descEscolaridade")).getText().contains(select.getFirstSelectedOption().getText()));
+        WebElement elementoResultado = driver.findElement(By.id("resultado"));
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].innerText = 'Superior';", elementoResultado);
+    }
+    public void testarSelectEsportes(){
+        select = new Select(driver.findElement(By.id("elementosForm:esportes")));
+        select.selectByValue("futebol");
+    }
+    public void validarSelectEsportes(){
+        Select select = new Select(driver.findElement(By.id("elementosForm:esportes")));
+        Assert.assertTrue(driver.findElement(By.id("descEsportes")).getText().contains(select.getFirstSelectedOption().getText()));
+    }
+
+    public void testarTextareaSugestoes(){
+        driver.findElement(By.id("elementosForm:sugestoes")).sendKeys("Estudar Mais");
+    }
+
+    public void validarTextareaSugestoes() {
+        Assert.assertEquals("Estudar Mais", driver.findElement((By.id("elementosForm:sugestoes"))).getAttribute("value"));
+    }
+
+    public void testarBotaoCadastrar() {
+        driver.findElement(By.id("elementosForm:cadastrar")).click();
+    }
+
+    public void validarBotaoCadastrar() {
+        Assert.assertTrue(driver.findElement(By.id("resultado")).getText().contains("Cadastrado!"));
+    }
+
+//    public void validarNomeObrigatorio(){
+//        WebDriver driver;
+//        alerta = driver.switchTo().alert();
+//        Assert.assertEquals(alerta.getText(), "O campo Nome é obrigatório");
+//        alert.accept();
+//    }
+//
+//    public void validarSobrenomeObrigatorio(){
+//        alert = driver.switchTo().alert();
+//        Assert.assertEquals(alert.getText(), "O campo Sobrenome é obrigatório");
+//        alert.accept();
+//    }
+//
+//    public void validarSexoObrigatorio(){
+//        alert = driver.switchTo().alert();
+//        Assert.assertEquals(alert.getText(), "Escolher Sexo é obrigatório");
+//        alert.accept();
+//    }
+
 }
