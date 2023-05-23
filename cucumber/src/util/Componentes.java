@@ -122,23 +122,41 @@ public class Componentes {
         Assert.assertTrue(driver.findElement(By.id("resultado")).getText().contains("Cadastrado!"));
     }
 
-//    public void validarNomeObrigatorio(){
-//        WebDriver driver;
-//        alerta = driver.switchTo().alert();
-//        Assert.assertEquals(alerta.getText(), "O campo Nome é obrigatório");
-//        alert.accept();
-//    }
-//
-//    public void validarSobrenomeObrigatorio(){
+    public void validarNomeObrigatorio(){
+        WebDriver driver = null;
+        driver.findElement(By.id("elementosForm:nome")).sendKeys("");
+        Alert alerta = driver.switchTo().alert();
+        Assert.assertEquals(alerta.getText(), "O campo Nome é obrigatório");
+        alerta.accept();
+//        WebElement campoNome = driver.findElement(By.id("elementosForm:nome"));
+//        String valorCampoNome = campoNome.getAttribute("value");
+//        Assert.assertTrue(valorCampoNome.isEmpty());
+//        WebElement mensagemErro = driver.findElement(By.id("mensagemNome"));
+//        Assert.assertEquals("O campo Nome é obrigatório!", mensagemErro.getText());
+
+
+    }
+
+    public void validarSobrenomeObrigatorio(){
 //        alert = driver.switchTo().alert();
 //        Assert.assertEquals(alert.getText(), "O campo Sobrenome é obrigatório");
 //        alert.accept();
-//    }
-//
-//    public void validarSexoObrigatorio(){
+        driver.findElement(By.id("elementosForm:sobrenome")).sendKeys("");
+        WebElement campoNome = driver.findElement(By.id("elementosForm:sobrenome"));
+        String valorCampoNome = campoNome.getAttribute("value");
+        Assert.assertTrue(valorCampoNome.isEmpty());
+    }
+
+    public void validarSexoObrigatorio(){
 //        alert = driver.switchTo().alert();
 //        Assert.assertEquals(alert.getText(), "Escolher Sexo é obrigatório");
 //        alert.accept();
-//    }
+        driver.findElement(By.id("elementosForm:sexo")).sendKeys("");
+
+        WebElement campoNome = driver.findElement(By.id("elementosForm:sexo"));
+        String valorCampoNome = campoNome.getAttribute("value");
+        Assert.assertTrue(valorCampoNome.isEmpty());
+
+    }
 
 }

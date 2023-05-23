@@ -61,4 +61,30 @@ public class Desafio01Step{
         componentes.validarBotaoCadastrar();
 //        componentes.fecharNavegador();
     }
+
+    @Dado("que o usuário não preenche o campo Nome")
+    public void que_o_usuário_não_preenche_o_campo_Nome(){
+        componentes.validarNomeObrigatorio();
+    }
+
+    @E("não preenche o campo Sobrenome")
+    public void não_preenche_o_campo_Sobrenome(){
+        componentes.validarSobrenomeObrigatorio();
+    }
+
+    @E("não seleciona o campo Sexo")
+    public void não_seleciona_o_campo_Sexo(){
+        componentes.validarSexoObrigatorio();
+    }
+    @Quando("acionar o botão Cadastrar")
+    public void acionar_o_botão_Cadastrar(){
+        componentes.fecharNavegador();
+    }
+
+    @Então("deve ser exibida uma mensagem indicando que os campos são obrigatórios")
+    public void deve_ser_exibida_uma_mensagem_indicando_que_os_campos_são_obrigatórios(){
+        componentes.validarNomeObrigatorio();
+        componentes.validarSobrenomeObrigatorio();
+        componentes.validarSexoObrigatorio();
+    }
 }
