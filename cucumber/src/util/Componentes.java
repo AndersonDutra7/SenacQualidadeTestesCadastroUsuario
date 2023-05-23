@@ -123,10 +123,15 @@ public class Componentes {
     }
 
     public void validarNomeObrigatorio(){
-        WebDriver driver = null;
+//        WebDriver driver = null;
+//        driver.findElement(By.id("elementosForm:nome")).sendKeys("");
+//        Alert alerta = driver.switchTo().alert();
+//        Assert.assertEquals(alerta.getText(), "O campo Nome é obrigatório");
+//        alerta.accept();
+
         driver.findElement(By.id("elementosForm:nome")).sendKeys("");
         Alert alerta = driver.switchTo().alert();
-        Assert.assertEquals(alerta.getText(), "O campo Nome é obrigatório");
+        Assert.assertEquals("O campo Nome é obrigatório", alerta.getText());
         alerta.accept();
 //        WebElement campoNome = driver.findElement(By.id("elementosForm:nome"));
 //        String valorCampoNome = campoNome.getAttribute("value");
@@ -141,21 +146,31 @@ public class Componentes {
 //        alert = driver.switchTo().alert();
 //        Assert.assertEquals(alert.getText(), "O campo Sobrenome é obrigatório");
 //        alert.accept();
+//        driver.findElement(By.id("elementosForm:sobrenome")).sendKeys("");
+//        WebElement campoNome = driver.findElement(By.id("elementosForm:sobrenome"));
+//        String valorCampoNome = campoNome.getAttribute("value");
+//        Assert.assertTrue(valorCampoNome.isEmpty());
+
         driver.findElement(By.id("elementosForm:sobrenome")).sendKeys("");
-        WebElement campoNome = driver.findElement(By.id("elementosForm:sobrenome"));
-        String valorCampoNome = campoNome.getAttribute("value");
-        Assert.assertTrue(valorCampoNome.isEmpty());
+        Alert alerta = driver.switchTo().alert();
+        Assert.assertEquals("O campo Sobrenome é obrigatório", alerta.getText());
+        alerta.accept();
     }
 
     public void validarSexoObrigatorio(){
 //        alert = driver.switchTo().alert();
 //        Assert.assertEquals(alert.getText(), "Escolher Sexo é obrigatório");
 //        alert.accept();
-        driver.findElement(By.id("elementosForm:sexo")).sendKeys("");
+//        driver.findElement(By.id("elementosForm:sexo")).sendKeys("");
+//
+//        WebElement campoNome = driver.findElement(By.id("elementosForm:sexo"));
+//        String valorCampoNome = campoNome.getAttribute("value");
+//        Assert.assertTrue(valorCampoNome.isEmpty());
 
-        WebElement campoNome = driver.findElement(By.id("elementosForm:sexo"));
-        String valorCampoNome = campoNome.getAttribute("value");
-        Assert.assertTrue(valorCampoNome.isEmpty());
+        driver.findElement(By.id("elementosForm:sexo")).sendKeys("");
+        Alert alerta = driver.switchTo().alert();
+        Assert.assertEquals("O campo Sexo é obrigatório", alerta.getText());
+        alerta.accept();
 
     }
 

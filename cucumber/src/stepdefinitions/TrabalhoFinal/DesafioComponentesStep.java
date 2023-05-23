@@ -6,12 +6,13 @@ import cucumber.api.java.it.Quando;
 import cucumber.api.java.pt.Então;
 import util.Componentes;
 
-public class Desafio01Step{
+public class DesafioComponentesStep {
 
     Componentes componentes = new Componentes();
 
     @Dado("que o usuário acessou o arquivo Campo de Treinamento")
     public void que_o_usuário_acessou_o_arquivo_Campo_de_Treinamento() {
+
         componentes.inicializarComponentes();
     }
 
@@ -78,7 +79,7 @@ public class Desafio01Step{
     }
     @Quando("acionar o botão Cadastrar")
     public void acionar_o_botão_Cadastrar(){
-        componentes.fecharNavegador();
+        componentes.testarBotaoCadastrar();
     }
 
     @Então("deve ser exibida uma mensagem indicando que os campos são obrigatórios")
@@ -86,5 +87,53 @@ public class Desafio01Step{
         componentes.validarNomeObrigatorio();
         componentes.validarSobrenomeObrigatorio();
         componentes.validarSexoObrigatorio();
+        componentes.fecharNavegador();
     }
+
+    @Dado("que o usuário não preenche o campo Nome {string}")
+    public void que_o_usuário_não_preenche_o_campo_Nome(String string) {
+        componentes.validarNomeObrigatorio();
+    }
+
+    @Dado("não preenche o campo Sobrenome Dutra")
+    public void não_preenche_o_campo_Sobrenome_Dutra() {
+        componentes.validarSobrenomeObrigatorio();    }
+
+    @Dado("não seleciona o campo Sexo Masculino")
+    public void não_seleciona_o_campo_Sexo_Masculino() {
+componentes.validarSexoObrigatorio();    }
+
+    @Então("deve ser exibida uma mensagem O campo Nome é obrigatório! indicando que os campos são obrigatórios")
+    public void deve_ser_exibida_uma_mensagem_O_campo_Nome_é_obrigatório_indicando_que_os_campos_são_obrigatórios() {
+        componentes.fecharNavegador();
+    }
+
+    @Dado("que o usuário não preenche o campo Nome Anderson")
+    public void que_o_usuário_não_preenche_o_campo_Nome_Anderson() {
+        // Write code here that turns the phrase above into concrete actions
+        componentes.validarNomeObrigatorio();
+    }
+
+    @Dado("não preenche o campo Sobrenome {string}")
+    public void não_preenche_o_campo_Sobrenome(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        componentes.validarSobrenomeObrigatorio();
+    }
+
+    @Então("deve ser exibida uma mensagem O campo Sobrenome é obrigatório! indicando que os campos são obrigatórios")
+    public void deve_ser_exibida_uma_mensagem_O_campo_Sobrenome_é_obrigatório_indicando_que_os_campos_são_obrigatórios() {
+        // Write code here that turns the phrase above into concrete actions
+        componentes.validarSobrenomeObrigatorio();
+    }
+
+    @Dado("não seleciona o campo Sexo {string}")
+    public void não_seleciona_o_campo_Sexo(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        componentes.validarSexoObrigatorio();
+    }
+
+    @Então("deve ser exibida uma mensagem O campo Sexo é obrigatório! indicando que os campos são obrigatórios")
+    public void deve_ser_exibida_uma_mensagem_O_campo_Sexo_é_obrigatório_indicando_que_os_campos_são_obrigatórios() {
+        // Write code here that turns the phrase above into concrete actions
+        componentes.fecharNavegador();    }
 }

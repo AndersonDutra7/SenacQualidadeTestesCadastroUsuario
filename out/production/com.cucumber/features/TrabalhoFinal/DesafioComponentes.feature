@@ -23,8 +23,8 @@ Funcionalidade: Acessar vários componentes html
     Quando clicar no botão Cadastrar
     Então as informações preenchidas devem ser exibidas no formulário final
     Exemplos:
-    | nome    | sobrenome| sexo     | comidaFavorita| escolaridade |esportes| sugestão    |
-    | Anderson| Dutra    | Masculino| Carne         | Superior      |Futebol | Estudar Mais|
+    | nome    | sobrenome| sexo     | comidaFavorita| escolaridade  | esportes | sugestão     |
+    | Anderson| Dutra    | Masculino| Carne         | Superior      | Futebol  | Estudar Mais |
 
 #  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=  #
 
