@@ -119,20 +119,21 @@ public class Componentes {
     }
 
     public void validarBotaoCadastrar() {
-        Assert.assertTrue(driver.findElement(By.id("resultado")).getText().contains("Cadastrado!"));
+//        driver.findElement(By.id("elementosForm:cadastrar")).click();
+        Assert.assertTrue(driver.findElement(By.id("informacao")).getText().contains("Cadastrado!"));
     }
 
     public void validarNomeObrigatorio(){
-//        WebDriver driver = null;
-//        driver.findElement(By.id("elementosForm:nome")).sendKeys("");
-//        Alert alerta = driver.switchTo().alert();
-//        Assert.assertEquals(alerta.getText(), "O campo Nome é obrigatório");
-//        alerta.accept();
-
-        driver.findElement(By.id("elementosForm:nome")).sendKeys("");
         Alert alerta = driver.switchTo().alert();
+//        driver.findElement(By.id("elementosForm:nome")).sendKeys();
+        WebElement campoNome = driver.findElement(By.id("elementosForm:nome"));
+        String valorCampoNome = campoNome.getAttribute("value");
+        Assert.assertTrue(valorCampoNome.isEmpty());
         Assert.assertEquals("O campo Nome é obrigatório", alerta.getText());
-        alerta.accept();
+
+//        Alert alerta = driver.switchTo().alert();
+//        Assert.assertEquals("O campo Nome é obrigatório", alerta.getText());
+//        alerta.accept();
 //        WebElement campoNome = driver.findElement(By.id("elementosForm:nome"));
 //        String valorCampoNome = campoNome.getAttribute("value");
 //        Assert.assertTrue(valorCampoNome.isEmpty());

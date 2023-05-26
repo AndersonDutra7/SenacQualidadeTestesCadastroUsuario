@@ -4,7 +4,7 @@ import org.junit.runner.RunWith;
 
 // O nome antes de .feature, deve ser o nome do arquivo feature que queres testar
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/features/TrabalhoFinal/DesafioComponentes.feature", glue = "", tags = "")
+@CucumberOptions(features = "src/features/TrabalhoFinal/Desafio01e02.feature", glue = "", tags = "")
 
 public class TestRunner {
 }
