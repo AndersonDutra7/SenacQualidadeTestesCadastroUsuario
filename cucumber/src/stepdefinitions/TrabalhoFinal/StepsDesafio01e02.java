@@ -3,7 +3,9 @@ package stepdefinitions.TrabalhoFinal;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.it.Quando;
 import cucumber.api.java.pt.Então;
+import org.junit.Assert;
 import util.Componentes;
+import util.FormularioFinal;
 
 public class StepsDesafio01e02 {
 
@@ -58,6 +60,7 @@ public class StepsDesafio01e02 {
     @Quando("clicar no botão Cadastrar")
     public void clicar_no_botão_Cadastrar() {
         componentes.testarBotaoCadastrar();
+        componentes.validarBotaoCadastrar();
         componentes.preencherFormulário();
     }
 
@@ -95,7 +98,7 @@ public class StepsDesafio01e02 {
         componentes.validarTextareaSugestoes();
     }
 
-//    public void formulario(){
-//        componentes.preencherFormulário();
-//    }
+    public void formulario(){
+        componentes.preencherFormulário();
+    }
 }
