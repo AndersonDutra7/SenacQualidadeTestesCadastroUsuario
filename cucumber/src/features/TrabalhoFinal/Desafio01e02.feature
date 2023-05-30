@@ -42,7 +42,7 @@ Funcionalidade: Acessar vários componentes html
     E não preenche o campo Sobrenome <sobrenome>
     E não seleciona o campo Sexo <sexo>
     Quando acionar o botão Cadastrar
-    Então deve ser exibida uma mensagem <mensagem> indicando que os campos são obrigatórios
+    Então deve ser exibida uma mensagem indicando <mensagem>
     Exemplos:
       | nome     | sobrenome | sexo        | mensagem                         |
       | ""       | Dutra     | Masculino   | O campo Nome é obrigatório!      |

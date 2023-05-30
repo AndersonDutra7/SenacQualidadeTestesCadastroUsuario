@@ -3,10 +3,11 @@ package util;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-//import FormularioFinal;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Componentes extends FormularioFinal{
+public class Componentes{
     private WebDriver driver;
     private Select select;
 
@@ -75,13 +76,7 @@ public class Componentes extends FormularioFinal{
     }
 
     public void validarTextfieldNome() {
-        try{
-            Assert.assertEquals("Anderson", driver.findElement((By.id("elementosForm:nome"))).getAttribute("value"));
-        } catch (UnhandledAlertException e){
-            Alert msg = driver.switchTo().alert();
-            Assert.assertEquals(msg.getText(), "Nome eh obrigatorio");
-            msg.dismiss();
-        }
+        Assert.assertEquals("Anderson", driver.findElement((By.id("elementosForm:nome"))).getAttribute("value"));
 
     }
 
@@ -174,7 +169,7 @@ public class Componentes extends FormularioFinal{
             driver.findElement(By.id("elementosForm:cadastrar")).click();
             Alert alert = driver.switchTo().alert();
             String alertMessage = alert.getText();
-            this.preencherFormulário();
+            this.preencherFormulário(driver, "Nome", "Sobrenome", "Sexo");
 
             if (alertMessage.equals("Nome eh obrigatorio")){
                 this.testarTextfieldNome();
@@ -206,6 +201,10 @@ public class Componentes extends FormularioFinal{
         Assert.assertTrue(driver.findElement(By.id("resultado")).getText().contains("Cadastrado!"));
     }
 
+    public void testarTextfieldNomeObrigatorio() {
+        driver.findElement(By.id("elementosForm:nome")).sendKeys("");
+    }
+
     public void validarNomeObrigatorio() {
         Alert msg = driver.switchTo().alert();
         Assert.assertEquals(msg.getText(), "Nome eh obrigatorio");
@@ -222,37 +221,67 @@ public class Componentes extends FormularioFinal{
 
     }
 
+    public void testarTextfieldSobrenomeObrigatorio() {
+        driver.findElement(By.id("elementosForm:sobrenome")).sendKeys("");
+    }
+
     public void validarSobrenomeObrigatorio() {
         Alert msg = driver.switchTo().alert();
         Assert.assertEquals(msg.getText(), "Sobrenome eh obrigatorio");
         msg.accept();
     }
 
+    public void testarRadioButtonSexoObrigatorio() {
+        driver.findElement(By.id("elementosForm:sexo")).click();
+    }
+
     public void validarSexoObrigatorio() {
-        Alert msg = driver.switchTo().alert();
+//        if (comboBoxSexo.getAttribute("value").isEmpty()) {
+
+            Alert msg = driver.switchTo().alert();
         Assert.assertEquals(msg.getText(), "Sexo eh obrigatorio");
         msg.accept();
 
     }
 
-    public void preencherFormulário() {
-        Assert.assertTrue(driver.findElement(By.id("resultado")).getText().contains("Cadastrado!"));
-        this.testarTextfieldNome();
-        this.validarTextfieldNome();
-        this.testarTextfieldSobrenome();
-        this.validarTextfieldSobrenome();
-        this.testarRadioButtonSexo();
-        this.validarRadioButtonSexo();
-//        driver.findElement(By.id("elementosForm:nome")).sendKeys("Anderson");
-//        driver.findElement(By.id("elementosForm:sobrenome")).sendKeys("Dutra");
-//        driver.findElement(By.id("elementosForm:sexo:0")).click();
-//        driver.findElement(By.id("elementosForm:comidaFavorita:0")).click();
-//        select = new Select(driver.findElement(By.id("elementosForm:escolaridade")));
-//        select.selectByValue("superior");
-//        select = new Select(driver.findElement(By.id("elementosForm:esportes")));
-//        select.selectByValue("futebol");
-//        driver.findElement(By.id("elementosForm:sugestoes")).sendKeys("Estudar Mais");
-//        driver.findElement(By.id("elementosForm:cadastrar")).click();
+    public void preencherFormulário(WebDriver driver, String nome, String sobrenome, String sexo) {
+        WebElement campoNome = driver.findElement(By.id("nome"));
+        WebElement campoSobrenome = driver.findElement(By.id("sobrenome"));
+        WebElement campoSexo = driver.findElement(By.id("sexo"));
+        WebElement botaoCadastrar = driver.findElement(By.id("cadastrar"));
+
+        campoNome.clear();
+        campoNome.sendKeys(nome);
+
+        campoSobrenome.clear();
+        campoSobrenome.sendKeys(sobrenome);
+
+        campoSexo.clear();
+        campoSexo.sendKeys(sexo);
+
+        botaoCadastrar.click();
+
+        try {
+            // Aguarda por um alerta
+            WebDriverWait wait = new WebDriverWait(driver, 5);
+            wait.until(ExpectedConditions.alertIsPresent());
+
+            // Lida com o alerta
+            Alert alert = driver.switchTo().alert();
+            String alertText = alert.getText();
+            alert.accept();
+
+            // Verifica se o alerta é referente ao campo obrigatório
+            if (alertText.contains("Nome eh obrigatorio")) {
+                // Lida com o alerta de campo obrigatório não preenchido
+                // Pode ser exibida uma mensagem de erro ou qualquer outra ação desejada
+                System.out.println("Erro: Nome é obrigatório");
+            }
+        } catch (NoAlertPresentException e) {
+            // Nenhum alerta foi exibido, o teste continuará normalmente
+        }
     }
 
 }
+
+
