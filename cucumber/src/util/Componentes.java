@@ -76,37 +76,10 @@ public class Componentes{
     }
 
     public void validarTextfieldNome() {
-        Assert.assertEquals("Anderson", driver.findElement((By.id("elementosForm:nome"))).getAttribute("value"));
+
+        Assert.assertEquals("Anderson", driver.findElement(By.id("descNome")).findElement(By.tagName("span")).getText());
 
     }
-
-//    public void validarTextfieldNome() {
-//        try {
-//            this.testarTextfieldNome();
-//            driver.findElement(By.id("elementosForm:cadastrar")).click();
-//            Assert.assertEquals("Anderson", driver.findElement((By.id("elementosForm:nome"))).getAttribute("value"));
-//
-//            Alert alert = driver.switchTo().alert();
-//            String alertMessage = alert.getText();
-//
-//            if (alertMessage.equals("Sobrenome eh obrigatorio")) {
-//                this.testarTextfieldSobrenome();
-//                System.out.println("Sobrenome é obrigatório");
-//                alert.accept(); // Aceitar a janela de alerta
-//            } else if (alertMessage.equals("Sexo eh obrigatorio")) {
-//                this.testarRadioButtonSexo();
-//                System.out.println("Sexo é obrigatório");
-//                alert.accept(); // Aceitar a janela de alerta
-//            } else {
-//                 O campo Nome foi validado corretamente
-//                System.out.println("Campo Nome validado com sucesso");
-//            }
-
-//        } catch (NoAlertPresentException e) {
-//             Não foi exibida nenhuma janela de alerta
-//            System.out.println("Nenhuma janela de alerta encontrada");
-//        }
-//    }
 
 
     public void testarTextfieldSobrenome() {
@@ -114,7 +87,7 @@ public class Componentes{
     }
 
     public void validarTextfieldSobrenome() {
-        Assert.assertEquals("Dutra", driver.findElement((By.id("elementosForm:sobrenome"))).getAttribute("value"));
+        Assert.assertEquals("Dutra", driver.findElement((By.id("descSobrenome"))).findElement(By.tagName("span")).getText());
     }
 
     public void testarRadioButtonSexo() {
@@ -122,7 +95,7 @@ public class Componentes{
     }
 
     public void validarRadioButtonSexo() {
-        Assert.assertTrue(driver.findElement(By.id("elementosForm:sexo:0")).isSelected());
+        Assert.assertEquals("Masculino", driver.findElement((By.id("descSexo"))).findElement(By.tagName("span")).getText());
     }
 
     public void testarCheckboxComidaFavorita() {
@@ -130,7 +103,7 @@ public class Componentes{
     }
 
     public void validarCheckboxComidaFavorita() {
-        Assert.assertTrue(driver.findElement(By.id("elementosForm:comidaFavorita:0")).isSelected());
+        Assert.assertEquals("Carne", driver.findElement((By.id("descComida"))).findElement(By.tagName("span")).getText());
     }
 
     public void testarSelectEscolaridade() {
@@ -139,11 +112,7 @@ public class Componentes{
     }
 
     public void validarSelectEscolaridade() {
-        Select select = new Select(driver.findElement(By.id("elementosForm:escolaridade")));
-        Assert.assertTrue(driver.findElement(By.id("descEscolaridade")).getText().contains(select.getFirstSelectedOption().getText()));
-        WebElement elementoResultado = driver.findElement(By.id("resultado"));
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].innerText = 'Superior';", elementoResultado);
+        Assert.assertEquals("superior", driver.findElement((By.id("descEscolaridade"))).findElement(By.tagName("span")).getText());
     }
 
     public void testarSelectEsportes() {
@@ -152,7 +121,6 @@ public class Componentes{
     }
 
     public void validarSelectEsportes() {
-        Select select = new Select(driver.findElement(By.id("elementosForm:esportes")));
         Assert.assertTrue(driver.findElement(By.id("descEsportes")).getText().contains(select.getFirstSelectedOption().getText()));
     }
 
@@ -161,44 +129,11 @@ public class Componentes{
     }
 
     public void validarTextareaSugestoes() {
-        Assert.assertEquals("Estudar Mais", driver.findElement((By.id("elementosForm:sugestoes"))).getAttribute("value"));
+        Assert.assertEquals("Estudar Mais", driver.findElement((By.id("descSugestoes"))).findElement(By.tagName("span")).getText());
     }
 
     public void testarBotaoCadastrar() {
-        try {
             driver.findElement(By.id("elementosForm:cadastrar")).click();
-            Alert alert = driver.switchTo().alert();
-            String alertMessage = alert.getText();
-            this.preencherFormulário(driver, "Nome", "Sobrenome", "Sexo");
-
-            if (alertMessage.equals("Nome eh obrigatorio")){
-                this.testarTextfieldNome();
-                System.out.println("Nome é obrigatório");
-                alert.accept(); // Aceitar a janela de alerta
-            } else if (alertMessage.equals("Sobrenome eh obrigatorio")) {
-                this.testarTextfieldSobrenome();
-                System.out.println("Sobrenome é obrigatório");
-                alert.accept(); // Aceitar a janela de alerta
-            } else if (alertMessage.equals("Sexo eh obrigatorio")) {
-                this.testarRadioButtonSexo();
-                System.out.println("Sexo é obrigatório");
-                alert.accept(); // Aceitar a janela de alerta
-            } else {
-//                 O campo Nome foi validado corretamente
-                System.out.println("Campo Nome validado com sucesso");
-            }
-
-        } catch (NoAlertPresentException e) {
-//             Não foi exibida nenhuma janela de alerta
-            System.out.println("Nenhuma janela de alerta encontrada");
-        }
-    }
-
-//        }
-
-    public void validarBotaoCadastrar() {
-        driver.findElement(By.id("elementosForm:cadastrar")).click();
-        Assert.assertTrue(driver.findElement(By.id("resultado")).getText().contains("Cadastrado!"));
     }
 
     public void testarTextfieldNomeObrigatorio() {
@@ -209,16 +144,6 @@ public class Componentes{
         Alert msg = driver.switchTo().alert();
         Assert.assertEquals(msg.getText(), "Nome eh obrigatorio");
         msg.accept();
-
-//        Assert.assertEquals("O campo Nome é obrigatório", alerta.getText());
-//        alerta.accept();
-//        WebElement campoNome = driver.findElement(By.id("elementosForm:nome"));
-//        String valorCampoNome = campoNome.getAttribute("value");
-//        Assert.assertTrue(valorCampoNome.isEmpty());
-//        WebElement mensagemErro = driver.findElement(By.id("mensagemNome"));
-//        Assert.assertEquals("O campo Nome é obrigatório!", mensagemErro.getText());
-
-
     }
 
     public void testarTextfieldSobrenomeObrigatorio() {
@@ -236,9 +161,7 @@ public class Componentes{
     }
 
     public void validarSexoObrigatorio() {
-//        if (comboBoxSexo.getAttribute("value").isEmpty()) {
-
-            Alert msg = driver.switchTo().alert();
+        Alert msg = driver.switchTo().alert();
         Assert.assertEquals(msg.getText(), "Sexo eh obrigatorio");
         msg.accept();
 

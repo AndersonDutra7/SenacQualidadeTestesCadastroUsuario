@@ -15,133 +15,136 @@ public class StepsTeste {
         componentes.inicializarComponentes();
     }
 
-    @Dado("que o usuário preencheu o campo Nome")
-    public void que_o_usuário_preencheu_o_campo_Nome() {
+    @Dado("que o usuário preencheu os campos Nome, Sobrenome, Sexo, ComidaFavorita, Escolaridade, Esportes e Sugestão")
+    public void que_o_usuário_preencheu_os_campos_Nome_Sobrenome_Sexo_ComidaFavorita_Escolaridade_Esportes_e_Sugestão() {
         componentes.testarTextfieldNome();
-    }
-
-    @Dado("que o usuário preencheu o campo Sobrenome")
-    public void que_o_usuário_preencheu_o_campo_Sobrenome() {
         componentes.testarTextfieldSobrenome();
-    }
-
-    @Dado("que o usuário preencheu o campo Sexo")
-    public void que_o_usuário_preencheu_o_campo_Sexo() {
         componentes.testarRadioButtonSexo();
-    }
-
-    @Dado("que o usuário preencheu o campo comidaFavorita")
-    public void que_o_usuário_preencheu_o_campo_comidaFavorita() {
         componentes.testarCheckboxComidaFavorita();
-    }
-
-    @Dado("que o usuário preencheu o campo escolaridade")
-    public void que_o_usuário_preencheu_o_campo_escolaridade() {
         componentes.testarSelectEscolaridade();
-    }
-
-    @Dado("que o usuário preencheu o campo esportes")
-    public void que_o_usuário_preencheu_o_campo_esportes() {
         componentes.testarSelectEsportes();
-    }
-
-    @Dado("que o usuário preencheu o campo sugestão")
-    public void que_o_usuário_preencheu_o_campo_sugestão() {
         componentes.testarTextareaSugestoes();
     }
 
     @Quando("clicar no botão Cadastrar")
     public void clicar_no_botão_Cadastrar() {
-        componentes.testarBotaoCadastrar();
-        componentes.validarBotaoCadastrar();
-        WebDriver driver = null;
-        componentes.preencherFormulário(driver, "Nome", "Sobrenome", "Sexo");;
+        componentes.testarBotaoCadastrar();    }
 
-    }
-
-    @Então("as informações preenchidas devem ser exibidas no formulário final Anderson")
-    public void as_informações_preenchidas_devem_ser_exibidas_no_formulário_final_Anderson() {
+    @Então("as informações preenchidas Anderson devem ser validadas no formulário final nome")
+    public void as_informações_preenchidas_Anderson_devem_ser_validadas_no_formulário_final_nome() {
         componentes.validarTextfieldNome();
+        componentes.fecharNavegador();
     }
 
-    @Então("as informações preenchidas devem ser exibidas no formulário final Dutra")
-    public void as_informações_preenchidas_devem_ser_exibidas_no_formulário_final_Dutra() {
+    @Então("as informações preenchidas Dutra devem ser validadas no formulário final sobrenome")
+    public void as_informações_preenchidas_Dutra_devem_ser_validadas_no_formulário_final_sobrenome() {
         componentes.validarTextfieldSobrenome();
+        componentes.fecharNavegador();
     }
 
-    @Então("as informações preenchidas devem ser exibidas no formulário final Masculino")
-    public void as_informações_preenchidas_devem_ser_exibidas_no_formulário_final_Masculino() {
+    @Então("as informações preenchidas Masculino devem ser validadas no formulário final sexo")
+    public void as_informações_preenchidas_Masculino_devem_ser_validadas_no_formulário_final_sexo() {
         componentes.validarRadioButtonSexo();
+        componentes.fecharNavegador();
     }
 
-    @Então("as informações preenchidas devem ser exibidas no formulário final Carne")
-    public void as_informações_preenchidas_devem_ser_exibidas_no_formulário_final_Carne() {
+    @Então("as informações preenchidas Carne devem ser validadas no formulário final comidaFavorita")
+    public void as_informações_preenchidas_Carne_devem_ser_validadas_no_formulário_final_comidaFavorita() {
         componentes.validarCheckboxComidaFavorita();
+        componentes.fecharNavegador();
     }
 
-    @Então("as informações preenchidas devem ser exibidas no formulário final Superior")
-    public void as_informações_preenchidas_devem_ser_exibidas_no_formulário_final_Superior() {
+    @Então("as informações preenchidas superior devem ser validadas no formulário final escolaridade")
+    public void as_informações_preenchidas_superior_devem_ser_validadas_no_formulário_final_escolaridade() {
         componentes.validarSelectEscolaridade();
+        componentes.fecharNavegador();
     }
 
-    @Então("as informações preenchidas devem ser exibidas no formulário final Futebol")
-    public void as_informações_preenchidas_devem_ser_exibidas_no_formulário_final_Futebol() {
+    @Então("as informações preenchidas Futebol devem ser validadas no formulário final esportes")
+    public void as_informações_preenchidas_Futebol_devem_ser_validadas_no_formulário_final_esportes() {
         componentes.validarSelectEsportes();
+        componentes.fecharNavegador();
     }
 
-    @Então("as informações preenchidas devem ser exibidas no formulário final Estudar Mais")
-    public void as_informações_preenchidas_devem_ser_exibidas_no_formulário_final_Estudar_Mais() {
+    @Então("as informações preenchidas Estudar Mais devem ser validadas no formulário final sugestoes")
+    public void as_informações_preenchidas_Estudar_Mais_devem_ser_validadas_no_formulário_final_sugestoes() {
         componentes.validarTextareaSugestoes();
+        componentes.fecharNavegador();
     }
 
-    @Dado("que o usuário não preenche o campo Nome {string}")
-    public void que_o_usuário_não_preenche_o_campo_Nome(String string) {
-        componentes.testarTextfieldNomeObrigatorio();
-    }
-
-    @Dado("não preenche o campo Sobrenome Dutra")
-    public void não_preenche_o_campo_Sobrenome_Dutra() {
-        componentes.testarTextfieldSobrenomeObrigatorio();
-    }
-
-    @Dado("não seleciona o campo Sexo Masculino")
-    public void não_seleciona_o_campo_Sexo_Masculino() {
-        componentes.testarRadioButtonSexoObrigatorio();
-    }
-
-    @Quando("acionar o botão Cadastrar")
-    public void acionar_o_botão_Cadastrar() {
+    @Dado("que o usuário não preenche o campo nome>")
+    public void que_o_usuário_não_preenche_o_campo_nome() {
+        componentes.testarTextfieldSobrenome();
+        componentes.testarRadioButtonSexo();
         componentes.testarBotaoCadastrar();
     }
 
-    @Então("deve ser exibida uma mensagem indicando O campo Nome é obrigatório!")
-    public void deve_ser_exibida_uma_mensagem_indicando_O_campo_Nome_é_obrigatório() {
+    @Então("deve ser exibida uma mensagem O campo Nome é obrigatório! indicando que os campos são obrigatórios")
+    public void deve_ser_exibida_uma_mensagem_O_campo_Nome_é_obrigatório_indicando_que_os_campos_são_obrigatórios() {
+        componentes.validarNomeObrigatorio();
+        componentes.fecharNavegador();
+    }
+
+    @Dado("que o usuário não preenche o campo sobrenome>")
+    public void que_o_usuário_não_preenche_o_campo_sobrenome() {
+        componentes.testarTextfieldNome();
+        componentes.testarRadioButtonSexo();
+        componentes.testarBotaoCadastrar();
+    }
+
+    @Então("deve ser exibida uma mensagem O campo Sobrenome é obrigatório! indicando que os campos são obrigatórios")
+    public void deve_ser_exibida_uma_mensagem_O_campo_Sobrenome_é_obrigatório_indicando_que_os_campos_são_obrigatórios() {
+        componentes.validarSobrenomeObrigatorio();
+        componentes.fecharNavegador();
+    }
+
+    @Dado("que o usuário não preenche o campo sexo>")
+    public void que_o_usuário_não_preenche_o_campo_sexo() {
+        componentes.testarTextfieldNome();
+        componentes.testarTextfieldSobrenome();
+        componentes.testarBotaoCadastrar();
+    }
+
+    @Então("deve ser exibida uma mensagem O campo Sexo é obrigatório! indicando que os campos são obrigatórios")
+    public void deve_ser_exibida_uma_mensagem_O_campo_Sexo_é_obrigatório_indicando_que_os_campos_são_obrigatórios() {
+        componentes.validarSexoObrigatorio();
+        componentes.fecharNavegador();
+    }
+
+    @Dado("que o usuário não preenche o campo nome e sobrenome>")
+    public void que_o_usuário_não_preenche_o_campo_nome_e_sobrenome() {
+        componentes.testarRadioButtonSexo();
+    }
+
+    @Então("deve ser exibida uma mensagem Os campos Nome e Sobrenome são obrigatórios indicando que os campos são obrigatórios")
+    public void deve_ser_exibida_uma_mensagem_Os_campos_Nome_e_Sobrenome_são_obrigatórios_indicando_que_os_campos_são_obrigatórios() {
+        componentes.validarNomeObrigatorio();
+        componentes.validarSobrenomeObrigatorio();
+        componentes.fecharNavegador();
+    }
+
+    @Dado("que o usuário não preenche o campo nome e sexo>")
+    public void que_o_usuário_não_preenche_o_campo_nome_e_sexo() {
+        componentes.testarTextfieldSobrenome();
+    }
+
+    @Então("deve ser exibida uma mensagem Os campos Nome e Sexo são obrigatórios indicando que os campos são obrigatórios")
+    public void deve_ser_exibida_uma_mensagem_Os_campos_Nome_e_Sexo_são_obrigatórios_indicando_que_os_campos_são_obrigatórios() {
+        componentes.validarNomeObrigatorio();
+        componentes.fecharNavegador();
+    }
+
+    @Dado("que o usuário não preenche o campo sexo e sobrenome>")
+    public void que_o_usuário_não_preenche_o_campo_sexo_e_sobrenome() {
         componentes.validarNomeObrigatorio();
     }
 
-    @Dado("que o usuário não preenche o campo Nome Anderson")
-    public void que_o_usuário_não_preenche_o_campo_Nome_Anderson() {
-        componentes.testarTextfieldNomeObrigatorio();
-    }
-
-    @Dado("não preenche o campo Sobrenome {string}")
-    public void não_preenche_o_campo_Sobrenome(String string) {
-        componentes.testarTextfieldSobrenomeObrigatorio();
-    }
-
-    @Então("deve ser exibida uma mensagem indicando O campo Sobrenome é obrigatório!")
-    public void deve_ser_exibida_uma_mensagem_indicando_O_campo_Sobrenome_é_obrigatório() {
-        componentes.validarSobrenomeObrigatorio();
-    }
-
-    @Dado("não seleciona o campo Sexo {string}")
-    public void não_seleciona_o_campo_Sexo(String string) {
-        componentes.testarRadioButtonSexoObrigatorio();
-    }
-
-    @Então("deve ser exibida uma mensagem indicando O campo Sexo é obrigatório!")
-    public void deve_ser_exibida_uma_mensagem_indicando_O_campo_Sexo_é_obrigatório() {
+    @Então("deve ser exibida uma mensagem Os campos Sexo e Sobrenome são obrigatórios indicando que os campos são obrigatórios")
+    public void deve_ser_exibida_uma_mensagem_Os_campos_Sexo_e_Sobrenome_são_obrigatórios_indicando_que_os_campos_são_obrigatórios() {
         componentes.validarSexoObrigatorio();
+        componentes.validarSobrenomeObrigatorio();
+        componentes.fecharNavegador();
     }
+
 }
 

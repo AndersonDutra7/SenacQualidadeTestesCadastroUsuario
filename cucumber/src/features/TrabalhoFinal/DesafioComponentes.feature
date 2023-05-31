@@ -14,18 +14,20 @@ Funcionalidade: Acessar vários componentes html
 
   @validar_formulário_final
   Esquema do Cenário: Validar Formulário Final
-    Dado que o usuário preencheu o campo Nome com <nome>
-    E preencheu o campo Sobrenome com <sobrenome>
-    E selecionou o Sexo como <sexo>
-    E selecionou a Comida Favorita como <comidaFavorita>
-    E selecionou sua Escolaridade como <escolaridade>
-    E selecionou os Esportes como <esportes>
-    E preencheu a Sugestão como <sugestão>
+    Dado que o usuário preencheu os campos Nome, Sobrenome, Sexo, ComidaFavorita, Escolaridade, Esportes e Sugestão
     Quando clicar no botão Cadastrar
-    Então as informações preenchidas devem ser exibidas no formulário final
+    Então as informações preenchidas <informações> devem ser validadas no formulário final <formulário final>
     Exemplos:
-    | nome    | sobrenome| sexo     | comidaFavorita| escolaridade  | esportes | sugestão     |
-    | Anderson| Dutra    | Masculino| Carne         | Superior      | Futebol  | Estudar Mais |
+    | informações    | formulário final|
+    | Anderson       | nome            |
+    | Dutra          | sobrenome       |
+    | Masculino      | sexo            |
+    | Carne          | comidaFavorita  |
+    | superior       | escolaridade    |
+    | Futebol        | esportes        |
+    | Estudar Mais   | sugestoes       |
+
+
 #
 #  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=  #
 
@@ -37,15 +39,16 @@ Funcionalidade: Acessar vários componentes html
 
   @validar_campos_obrigatorios
   Esquema do Cenário: Validar Campos Obrigatórios
-    Dado que o usuário não preenche o campo Nome <nome>
-    E não preenche o campo Sobrenome <sobrenome>
-    E não seleciona o campo Sexo <sexo>
-    Quando acionar o botão Cadastrar
+    Dado que o usuário não preenche o campo <campo>>
+    Quando clicar no botão Cadastrar
     Então deve ser exibida uma mensagem <mensagem> indicando que os campos são obrigatórios
     Exemplos:
-      | nome     | sobrenome | sexo        | mensagem                         |
-      | ""       | Dutra     | Masculino   | O campo Nome é obrigatório!      |
-      | Anderson | ""        | Masculino   | O campo Sobrenome é obrigatório! |
-      | Anderson | Dutra     | ""          | O campo Sexo é obrigatório!      |
+      | campo            | mensagem                                    |
+      | nome             | O campo Nome é obrigatório!                 |
+      | sobrenome        | O campo Sobrenome é obrigatório!            |
+      | sexo             | O campo Sexo é obrigatório!                 |
+      | nome e sobrenome | Os campos Nome e Sobrenome são obrigatórios |
+      | nome e sexo      | Os campos Nome e Sexo são obrigatórios      |
+      | sexo e sobrenome | Os campos Sexo e Sobrenome são obrigatórios |
 
 #  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=  #
