@@ -3,10 +3,9 @@ package stepdefinitions.TrabalhoFinal;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.it.Quando;
 import cucumber.api.java.pt.Então;
-import org.openqa.selenium.WebDriver;
 import util.Componentes;
 
-public class StepsTeste {
+public class DesafiosSteps {
 
     Componentes componentes = new Componentes();
 
@@ -28,7 +27,8 @@ public class StepsTeste {
 
     @Quando("clicar no botão Cadastrar")
     public void clicar_no_botão_Cadastrar() {
-        componentes.testarBotaoCadastrar();    }
+        componentes.testarBotaoCadastrar();
+    }
 
     @Então("as informações preenchidas Anderson devem ser validadas no formulário final nome")
     public void as_informações_preenchidas_Anderson_devem_ser_validadas_no_formulário_final_nome() {
@@ -72,79 +72,39 @@ public class StepsTeste {
         componentes.fecharNavegador();
     }
 
-    @Dado("que o usuário não preenche o campo nome>")
-    public void que_o_usuário_não_preenche_o_campo_nome() {
-        componentes.testarTextfieldSobrenome();
-        componentes.testarRadioButtonSexo();
-        componentes.testarBotaoCadastrar();
+    @Dado("que o usuário não preencheu o campo nome")
+    public void que_o_usuário_não_preencheu_o_campo_nome() {
+        componentes.testarTextfieldNomeObrigatorio();
     }
 
-    @Então("deve ser exibida uma mensagem O campo Nome é obrigatório! indicando que os campos são obrigatórios")
-    public void deve_ser_exibida_uma_mensagem_O_campo_Nome_é_obrigatório_indicando_que_os_campos_são_obrigatórios() {
+    @Então("deve ser exibida uma mensagem O campo Nome é obrigatório!")
+    public void deve_ser_exibida_uma_mensagem_O_campo_Nome_é_obrigatório() {
         componentes.validarNomeObrigatorio();
         componentes.fecharNavegador();
     }
 
-    @Dado("que o usuário não preenche o campo sobrenome>")
-    public void que_o_usuário_não_preenche_o_campo_sobrenome() {
+    @Dado("que o usuário não preencheu o campo sobrenome")
+    public void que_o_usuário_não_preencheu_o_campo_sobrenome() {
         componentes.testarTextfieldNome();
-        componentes.testarRadioButtonSexo();
-        componentes.testarBotaoCadastrar();
+        componentes.testarTextfieldSobrenomeObrigatorio();
     }
 
-    @Então("deve ser exibida uma mensagem O campo Sobrenome é obrigatório! indicando que os campos são obrigatórios")
-    public void deve_ser_exibida_uma_mensagem_O_campo_Sobrenome_é_obrigatório_indicando_que_os_campos_são_obrigatórios() {
+    @Então("deve ser exibida uma mensagem O campo Sobrenome é obrigatório!")
+    public void deve_ser_exibida_uma_mensagem_O_campo_Sobrenome_é_obrigatório() {
         componentes.validarSobrenomeObrigatorio();
         componentes.fecharNavegador();
     }
 
-    @Dado("que o usuário não preenche o campo sexo>")
-    public void que_o_usuário_não_preenche_o_campo_sexo() {
+    @Dado("que o usuário não preencheu o campo sexo")
+    public void que_o_usuário_não_preencheu_o_campo_sexo() {
         componentes.testarTextfieldNome();
         componentes.testarTextfieldSobrenome();
-        componentes.testarBotaoCadastrar();
+        componentes.testarRadioButtonSexoObrigatorio();
     }
 
-    @Então("deve ser exibida uma mensagem O campo Sexo é obrigatório! indicando que os campos são obrigatórios")
-    public void deve_ser_exibida_uma_mensagem_O_campo_Sexo_é_obrigatório_indicando_que_os_campos_são_obrigatórios() {
+    @Então("deve ser exibida uma mensagem O campo Sexo é obrigatório!")
+    public void deve_ser_exibida_uma_mensagem_O_campo_Sexo_é_obrigatório() {
         componentes.validarSexoObrigatorio();
         componentes.fecharNavegador();
     }
-
-    @Dado("que o usuário não preenche o campo nome e sobrenome>")
-    public void que_o_usuário_não_preenche_o_campo_nome_e_sobrenome() {
-        componentes.testarRadioButtonSexo();
-    }
-
-    @Então("deve ser exibida uma mensagem Os campos Nome e Sobrenome são obrigatórios indicando que os campos são obrigatórios")
-    public void deve_ser_exibida_uma_mensagem_Os_campos_Nome_e_Sobrenome_são_obrigatórios_indicando_que_os_campos_são_obrigatórios() {
-        componentes.validarNomeObrigatorio();
-        componentes.validarSobrenomeObrigatorio();
-        componentes.fecharNavegador();
-    }
-
-    @Dado("que o usuário não preenche o campo nome e sexo>")
-    public void que_o_usuário_não_preenche_o_campo_nome_e_sexo() {
-        componentes.testarTextfieldSobrenome();
-    }
-
-    @Então("deve ser exibida uma mensagem Os campos Nome e Sexo são obrigatórios indicando que os campos são obrigatórios")
-    public void deve_ser_exibida_uma_mensagem_Os_campos_Nome_e_Sexo_são_obrigatórios_indicando_que_os_campos_são_obrigatórios() {
-        componentes.validarNomeObrigatorio();
-        componentes.fecharNavegador();
-    }
-
-    @Dado("que o usuário não preenche o campo sexo e sobrenome>")
-    public void que_o_usuário_não_preenche_o_campo_sexo_e_sobrenome() {
-        componentes.validarNomeObrigatorio();
-    }
-
-    @Então("deve ser exibida uma mensagem Os campos Sexo e Sobrenome são obrigatórios indicando que os campos são obrigatórios")
-    public void deve_ser_exibida_uma_mensagem_Os_campos_Sexo_e_Sobrenome_são_obrigatórios_indicando_que_os_campos_são_obrigatórios() {
-        componentes.validarSexoObrigatorio();
-        componentes.validarSobrenomeObrigatorio();
-        componentes.fecharNavegador();
-    }
-
 }
-

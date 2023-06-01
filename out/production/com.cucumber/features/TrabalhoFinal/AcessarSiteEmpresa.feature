@@ -1,4 +1,9 @@
 # language: pt
+
+# Desafio 03
+# Criar um cenário para retornar na pesquisa do google a empresa que você trabalha ou deseja trabalhar,
+# clicar no site da empresa e validar se o site que abriu é realmente o da empresa selecionada.
+
 Funcionalidade: Acessar Google
 
   Contexto:

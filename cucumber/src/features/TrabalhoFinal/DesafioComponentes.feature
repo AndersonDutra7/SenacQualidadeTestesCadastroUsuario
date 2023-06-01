@@ -1,9 +1,9 @@
 # language: pt
 
 #Desafio 01
-#Em apenas um esquema de cenário, preencher seu nome, seu sobrenome, seu sexo, sua comida preferida,
+# Em apenas um esquema de cenário, preencher seu nome, seu sobrenome, seu sexo, sua comida preferida,
 #sua escolaridade, qual esporte você pratica, alguma sugestão e clicar no botão Cadastrar.
-#Após clicar no botão cadastrar, validar todas as informações preenchidas no formulário que será
+# Após clicar no botão cadastrar, validar todas as informações preenchidas no formulário que será
 #apresentado no formulário no final da página.
 
 Funcionalidade: Acessar vários componentes html
@@ -32,23 +32,24 @@ Funcionalidade: Acessar vários componentes html
 #  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=  #
 
 #Desafio 02
-#Validar regras de negócio:
+# Validar regras de negócio:
 #-- Nome é obrigatório;
 #-- Sobrenome é obrigatório;
 #-- Sexo é obrigatório;
 
   @validar_campos_obrigatorios
   Esquema do Cenário: Validar Campos Obrigatórios
-    Dado que o usuário não preenche o campo <campo>>
+    Dado que o usuário não preencheu o campo <campo>
     Quando clicar no botão Cadastrar
-    Então deve ser exibida uma mensagem <mensagem> indicando que os campos são obrigatórios
+    Então deve ser exibida uma mensagem <mensagem>
     Exemplos:
-      | campo            | mensagem                                    |
-      | nome             | O campo Nome é obrigatório!                 |
-      | sobrenome        | O campo Sobrenome é obrigatório!            |
-      | sexo             | O campo Sexo é obrigatório!                 |
-      | nome e sobrenome | Os campos Nome e Sobrenome são obrigatórios |
-      | nome e sexo      | Os campos Nome e Sexo são obrigatórios      |
-      | sexo e sobrenome | Os campos Sexo e Sobrenome são obrigatórios |
+      | campo                  | mensagem                                          |
+      | nome                   | O campo Nome é obrigatório!                       |
+      | sobrenome              | O campo Sobrenome é obrigatório!                  |
+      | sexo                   | O campo Sexo é obrigatório!                       |
+#      | nome e sobrenome       | Os campos Nome e Sobrenome são obrigatórios       |
+#      | nome e sexo            | Os campos Nome e Sexo são obrigatórios            |
+#      | sexo e sobrenome       | Os campos Sexo e Sobrenome são obrigatórios       |
+#      | nome, sexo e sobrenome | Os campos Nome, Sobrenome e Sexo são obrigatórios |
 
 #  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=  #

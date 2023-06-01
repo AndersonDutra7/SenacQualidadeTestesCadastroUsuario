@@ -3,9 +3,7 @@ package util;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Componentes{
     private WebDriver driver;
@@ -157,7 +155,7 @@ public class Componentes{
     }
 
     public void testarRadioButtonSexoObrigatorio() {
-        driver.findElement(By.id("elementosForm:sexo")).click();
+        driver.findElement(By.id("elementosForm:sexo"));
     }
 
     public void validarSexoObrigatorio() {
@@ -165,44 +163,6 @@ public class Componentes{
         Assert.assertEquals(msg.getText(), "Sexo eh obrigatorio");
         msg.accept();
 
-    }
-
-    public void preencherFormulário(WebDriver driver, String nome, String sobrenome, String sexo) {
-        WebElement campoNome = driver.findElement(By.id("nome"));
-        WebElement campoSobrenome = driver.findElement(By.id("sobrenome"));
-        WebElement campoSexo = driver.findElement(By.id("sexo"));
-        WebElement botaoCadastrar = driver.findElement(By.id("cadastrar"));
-
-        campoNome.clear();
-        campoNome.sendKeys(nome);
-
-        campoSobrenome.clear();
-        campoSobrenome.sendKeys(sobrenome);
-
-        campoSexo.clear();
-        campoSexo.sendKeys(sexo);
-
-        botaoCadastrar.click();
-
-        try {
-            // Aguarda por um alerta
-            WebDriverWait wait = new WebDriverWait(driver, 5);
-            wait.until(ExpectedConditions.alertIsPresent());
-
-            // Lida com o alerta
-            Alert alert = driver.switchTo().alert();
-            String alertText = alert.getText();
-            alert.accept();
-
-            // Verifica se o alerta é referente ao campo obrigatório
-            if (alertText.contains("Nome eh obrigatorio")) {
-                // Lida com o alerta de campo obrigatório não preenchido
-                // Pode ser exibida uma mensagem de erro ou qualquer outra ação desejada
-                System.out.println("Erro: Nome é obrigatório");
-            }
-        } catch (NoAlertPresentException e) {
-            // Nenhum alerta foi exibido, o teste continuará normalmente
-        }
     }
 
 }
